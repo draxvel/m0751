@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <div>
+        <form method="post">
+            <input type="text" name="text" placeholder="Введіть повідомлення">
+            <input type="text" name="tag" placeholder="Тег">
+            <button type="submit"> Додати </button>
+        </form>
+    </div>
+
+    <div>Список постів</div>
+
+
+    <form method="post" action="filter">
+          <input type="text" name="filter">
+        <button type="submit">Знайти</button>
+    </form>
+
+    {{#posts}}
+        <div>
+            <b>{{id}}</b>
+            <span>{{text}}</span>
+            <i>{{tag}}</i>
+        </div>
+    {{/posts}}
+</body>
+</html>
