@@ -1,4 +1,4 @@
-package com.x.m0751;
+package com.x.m0751.controller;
 
 import com.x.m0751.domain.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,26 +12,24 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
 
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name,
-                           Map<String, Object> model) {
-        model.put("name", name);
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping ("/main")
     public String main(Map<String, Object> model){
         Iterable<Post> posts = postRepository.findAll();
         model.put("posts", posts);
         return "main";
     }
 
-    @PostMapping
+    @PostMapping ("/main")
     public String add(@RequestParam String text, @RequestParam String tag,  Map<String, Object> model){
         Post post = new Post(text, tag);
         postRepository.save(post);
