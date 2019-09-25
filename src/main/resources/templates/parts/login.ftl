@@ -8,6 +8,14 @@
             <label>Пароль: </label>
                 <input type="password" name="password" class="form-control" placeholder="Введіть пароль"/>
         </div>
+
+        <#if isRegisterForm>
+        <div class="form-group">
+            <label>Email: </label>
+            <input type="email" name="email" class="form-control" placeholder="some@some.com"/>
+        </div>
+        </#if>
+
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <button type="submit" class="btn btn-primary"><#if isRegisterForm> Зареєструватись<#else> Вхід </#if></button>
             <#if !isRegisterForm><a href="/registration">Зареєструватись</a></#if>
